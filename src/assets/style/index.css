@@ -1,18 +1,39 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Merriweather', serif;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Merriweather", serif;
 }
 
-body{
-    background-color: rgb(229 231 235);
+body {
+  background-color: rgb(229 231 235);
 }
 
-a{
-    text-decoration: none;
+a {
+  text-decoration: none;
 }
 
-ul{
-    list-style: none;
+ul {
+  list-style: none;
+}
+
+.MuiDataGrid-iconSeparator {
+  display: none !important;
+}
+
+.css-ptiqhd-MuiSvgIcon-root:last-of-type {
+  display: none !important;
+}
+
+.css-yrdy0g-MuiDataGrid-columnHeaderRow,
+.css-1c2i806-MuiFormLabel-root-MuiInputLabel-root.Mui-focused,
+.css-levciy-MuiTablePagination-displayedRows,
+.css-levciy-MuiTablePagination-displayedRows,
+.css-aqpgxn-MuiFormLabel-root-MuiInputLabel-root:hover,
+.css-aqpgxn-MuiFormLabel-root-MuiInputLabel-root {
+  color: #6a2e2e !important;
+}
+
+.css-8q2m5j-MuiInputBase-root-MuiInput-root:after {
+  border-bottom: 2px solid #6a2e2e !important;
 }

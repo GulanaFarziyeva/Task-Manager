@@ -1,16 +1,22 @@
 import { Routes, Route } from "react-router-dom";
+import { Box } from "@mui/system";
 
-
-import Login from "./features/login/Login";
-import Register from "./features/register/Register";
+import Navbar from "./layout/Navbar";
+import Login from "./features/auth/login/Login";
+import Register from "./features/auth/register/Register";
+import TaskList from "./features/task/TaskList";
 
 const App = () => {
   return (
-    <Routes>
-    <Route path="/" element={<Login />} />
-    <Route path="/register" element={<Register />} />
-  </Routes>
+    <Box>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Login />} />
+        <Route path="/tasklist" element={<TaskList />} />
+        <Route path="/register" element={<Register />} />
+      </Routes>
+    </Box>
   );
-}
+};
 
 export default App;

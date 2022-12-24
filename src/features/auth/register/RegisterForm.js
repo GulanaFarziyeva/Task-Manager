@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
   Divider,
   Button,
@@ -8,9 +9,33 @@ import {
 } from "@mui/material";
 
 const RegisterForm = () => {
+  const [formData, setFormData] = useState({
+    name: "",
+    number: "",
+    address: "",
+    username: "",
+    email: "",
+    password: "",
+  });
+
+  const { name, number, address, username, email, password } = formData;
+
+  const onInputChange = (e) => {
+    setFormData((prevState) => ({
+      ...prevState,
+      [e.target.name]: e.target.value,
+    }));
+  };
+
+  const submitHandle = (e) => {
+    e.preventDefault();
+    console.log(name, password);
+  };
+
   return (
     <Box
       component="form"
+      onSubmit={submitHandle}
       sx={{
         display: "flex",
         flexDirection: "column",
@@ -23,9 +48,9 @@ const RegisterForm = () => {
     >
       <Typography
         textAlign="center"
-        sx={{ fontWeight: 700, fontSize: "20px", mb: 4 }}
+        sx={{ fontWeight: 700, fontSize: "24px", mb: 4 }}
       >
-        Sign up
+        Register
       </Typography>
 
       <TextField
@@ -33,6 +58,9 @@ const RegisterForm = () => {
         id="outlined-required"
         label="Organization name"
         sx={{ mb: 3 }}
+        name="name"
+        value={name}
+        onChange={onInputChange}
       />
 
       <TextField
@@ -40,7 +68,9 @@ const RegisterForm = () => {
         id="outlined-password-input"
         label="Phone Number *"
         type="number"
-        autoComplete="current-password"
+        name="number"
+        value={number}
+        onChange={onInputChange}
       />
 
       <TextField
@@ -48,6 +78,9 @@ const RegisterForm = () => {
         id="outlined-required"
         label="Address"
         sx={{ mb: 3 }}
+        name="address"
+        value={address}
+        onChange={onInputChange}
       />
 
       <TextField
@@ -55,6 +88,9 @@ const RegisterForm = () => {
         id="outlined-required"
         label="Username"
         sx={{ mb: 3 }}
+        name="username"
+        value={username}
+        onChange={onInputChange}
       />
 
       <TextField
@@ -63,6 +99,9 @@ const RegisterForm = () => {
         label="Email"
         type="email"
         sx={{ mb: 3 }}
+        name="email"
+        value={email}
+        onChange={onInputChange}
       />
 
       <TextField
@@ -71,9 +110,12 @@ const RegisterForm = () => {
         label="Password*"
         type="number"
         autoComplete="current-password"
+        name="password"
+        value={password}
+        onChange={onInputChange}
       />
 
-      <Button variant="contained" sx={{ mt: 4 }}>
+      <Button variant="contained" sx={{ mt: 4 }} type="submit">
         Sign up
       </Button>
 

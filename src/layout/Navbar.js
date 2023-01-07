@@ -7,15 +7,23 @@ import PersonIcon from "@mui/icons-material/Person";
 import LoginIcon from "@mui/icons-material/Login";
 import { NavLink } from "react-router-dom";
 
+import theme from "../theme/theme";
+
 const Navbar = () => {
   return (
     <Box sx={{ flexGrow: 1, height: "40" }}>
-      <AppBar position="fixed" sx={{ backgroundColor: "rgb(30 41 59)" }}>
+      <AppBar position="fixed" sx={{ backgroundColor: theme.palette.main }}>
         <Toolbar>
           <Typography
             variant="h6"
             component="div"
-            sx={{ flexGrow: 1, fontSize: "20px", fontWeight: 500 }}
+            sx={{
+              flexGrow: 1,
+              fontSize: theme.typography.textMd,
+              fontWeight: 500,
+              letterSpacing: "1px",
+              textTransform: "uppercase",
+            }}
           >
             Task Manager
           </Typography>
@@ -26,12 +34,16 @@ const Navbar = () => {
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center",
-                fontSize: "13px",
-                mr:2
+                fontSize: theme.typography.textXs,
+                mr: 2,
               }}
             >
               <LoginIcon
-                sx={{ fontSize: "17px", mr: 1, marginBottom: "2px" }}
+                sx={{
+                  fontSize: theme.typography.textMd,
+                  mr: 1,
+                  marginBottom: "2px",
+                }}
               />
               Sign in
             </Button>
@@ -39,15 +51,20 @@ const Navbar = () => {
           <NavLink to="/register">
             <Button
               sx={{
-                color: "#fff",
+                color: theme.palette.white,
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center",
-                fontSize: "13px",
+                fontSize: theme.typography.textXs,
+                backgroundColor: theme.palette.main,
               }}
             >
               <PersonIcon
-                sx={{ fontSize: "17px", mr: 1, marginBottom: "2px" }}
+                sx={{
+                  fontSize: theme.typography.textMd,
+                  mr: 1,
+                  marginBottom: "2px",
+                }}
               />
               Sign Up
             </Button>

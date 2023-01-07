@@ -1,15 +1,29 @@
 import { Button, TextField, Box, Typography } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import { useForm } from "react-hook-form";
-import "../../assets/style/index.css";
+import { useDispatch } from "react-redux";
+import { addTask } from './taskSlice'
+
+import theme from "../../theme/theme";
+import { closeModal } from "../modal/modalSlice";
+import { useState } from "react";
 
 const TaskForm = () => {
+  const dispatch = useDispatch();
+
+  const [data, setData] = useState();
+
   const {
     register,
     formState: { errors },
     handleSubmit,
   } = useForm();
-  const onSubmit = (data) => console.log(data);
+
+  const onSubmit = (data) => {
+    console.log(data);
+    dispatch(addTask(data))
+    return data;
+  };
 
   return (
     <Box
@@ -19,10 +33,16 @@ const TaskForm = () => {
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
-        margin: "150px auto 0 auto",
         width: "40%",
-        backgroundColor: "#fff",
+        backgroundColor: "#eceff1",
         p: 4,
+        position: "absolute",
+        zIndex: 999,
+        top: "50%",
+        left: " 50%",
+        transform: "translate(-50%, -50%)",
+        borderRadius: "8px",
+        boxShadow: "#6a2e2e 0px 2px 8px 0px",
       }}
       noValidate
       autoComplete="off"
@@ -32,24 +52,37 @@ const TaskForm = () => {
       >
         <Typography
           textAlign="center"
-          sx={{ fontWeight: 600, fontSize: "20px", color: "#616A6B" }}
+          sx={{
+            fontWeight: 300,
+            fontSize: theme.typography.textLg,
+            color: theme.palette.main,
+          }}
         >
           Add New Task
         </Typography>
-        <Button>
-          <CloseIcon sx={{ color: "#d63447" }} />
-        </Button>
+        <CloseIcon
+          sx={{ color: theme.palette.main, cursor: "pointer" }}
+          onClick={() => dispatch(closeModal())}
+        />
       </Box>
 
       <TextField
-        sx={{ mb: 1 }}
+        sx={{ mb: 1, color: theme.palette.main }}
         id="outlined-multiline-flexible"
         label="Title"
+        value={data}
+        onChange={setData}
         {...register("Title", { required: true })}
         aria-invalid={errors.Title ? "true" : false}
       />
       {errors.Title?.type === "required" && (
-        <p role="alert" style={{ color: "#d63447", fontSize: "14px" }}>
+        <p
+          role="alert"
+          style={{
+            color: theme.palette.danger,
+            fontSize: theme.typography.textMd,
+          }}
+        >
           Title is required
         </p>
       )}
@@ -66,7 +99,13 @@ const TaskForm = () => {
         aria-invalid={errors.date ? "true" : "false"}
       />
       {errors.date?.type === "required" && (
-        <p role="alert" style={{ color: "#d63447", fontSize: "14px" }}>
+        <p
+          role="alert"
+          style={{
+            color: theme.palette.danger,
+            fontSize: theme.typography.textMd,
+          }}
+        >
           Deadline is required
         </p>
       )}
@@ -81,7 +120,13 @@ const TaskForm = () => {
         aria-invalid={errors.Description ? "true" : "false"}
       />
       {errors.Description?.type === "required" && (
-        <p role="alert" style={{ color: "#d63447", fontSize: "14px" }}>
+        <p
+          role="alert"
+          style={{
+            color: theme.palette.danger,
+            fontSize: theme.typography.textMd,
+          }}
+        >
           Description is required
         </p>
       )}
@@ -89,7 +134,14 @@ const TaskForm = () => {
       <Button
         variant="contained"
         type="submit"
-        sx={{ mb: 2, width: "120px", alignSelf: "flex-end" }}
+        sx={{
+          mt: 2,
+          alignSelf: "flex-end",
+          fontSize: theme.typography.textXS,
+          backgroundColor: theme.palette.main,
+          py: 1,
+          width: "150px",
+        }}
       >
         Add Task
       </Button>

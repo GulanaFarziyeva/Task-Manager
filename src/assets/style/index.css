@@ -2,7 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Merriweather", serif;
+  font-family: 'IBM Plex Serif', serif;
 }
 
 body {
@@ -37,3 +37,4 @@ ul {
 .css-8q2m5j-MuiInputBase-root-MuiInput-root:after {
   border-bottom: 2px solid #6a2e2e !important;
 }
+

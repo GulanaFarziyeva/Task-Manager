@@ -1,27 +1,29 @@
-import {Box, TextField } from "@mui/material";
-import AddCircleIcon from "@mui/icons-material/AddCircle";
+import { Box, Button } from "@mui/material";
+import { useDispatch } from "react-redux";
+
+
+import { openModal} from "../modal/modalSlice";
 
 const AddTask = () => {
+  const dispatch = useDispatch();
+
   return (
-    <Box
-      component="form"
-      noValidate
-      autoComplete="off"
-      sx={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        mt:5
-      }}
-    >
-      <TextField
-        id="standard-multiline-flexible"
-        label="Add New Task"
-        multiline
-        variant="standard"
-        sx={{ width: "50vw", mr: 2 }}
-      />
-        <AddCircleIcon sx={{mt:3, fontSize:'30px', color: '#6a2e2e', cursor:'pointer'}}/>
+    <Box component="form" noValidate autoComplete="off">
+      <Button
+        variant="contained"
+        sx={{
+          background: "#6a2e2e !important",
+          fontSize: "12px",
+          py: 1.4,
+          width: "90%",
+          margin: "50px 5% 0 5%",
+          fontWeight: 500,
+          letterSpacing: "1px",
+        }}
+        onClick = {() => dispatch(openModal())}
+      >
+        Add New Task
+      </Button>
     </Box>
   );
 };

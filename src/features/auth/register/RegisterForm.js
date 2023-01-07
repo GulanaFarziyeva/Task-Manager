@@ -7,8 +7,13 @@ import {
   Typography,
   Tooltip,
 } from "@mui/material";
+import { useNavigate } from "react-router-dom";
+
+import theme from "../../../theme/theme";
 
 const RegisterForm = () => {
+  let navigate = useNavigate();
+
   const [formData, setFormData] = useState({
     name: "",
     number: "",
@@ -48,7 +53,7 @@ const RegisterForm = () => {
     >
       <Typography
         textAlign="center"
-        sx={{ fontWeight: 700, fontSize: "24px", mb: 4 }}
+        sx={{ fontWeight: 700, fontSize: theme.typography.textXl, mb: 4 }}
       >
         Register
       </Typography>
@@ -136,11 +141,11 @@ const RegisterForm = () => {
         <Tooltip>
           <Button
             sx={{
-              color: "rgb(55 48 163)",
-              fontSize: "15px",
+              color: theme.palette.gray,
+              fontSize: theme.typography.textSm,
               fontWeight: 600,
-              textDecoration: "underline",
             }}
+            onClick={() => navigate("/")}
           >
             Sign In
           </Button>

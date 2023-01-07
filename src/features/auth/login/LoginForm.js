@@ -14,7 +14,6 @@ import {
 } from "@mui/material";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
-
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
@@ -23,11 +22,6 @@ import { fetchUser } from "../authSlice";
 const LoginForm = () => {
   const [showPassword, setShowPassword] = useState(false);
 
-  const handleClickShowPassword = () => setShowPassword((show) => !show);
-
-  const handleMouseDownPassword = (event) => {
-    event.preventDefault();
-  };
   let navigate = useNavigate();
   const users = useSelector((state) => state.auth.data);
 
@@ -39,6 +33,13 @@ const LoginForm = () => {
   });
 
   const { username, password } = formData;
+
+  
+  const handleClickShowPassword = () => setShowPassword((show) => !show);
+
+  const handleMouseDownPassword = (event) => {
+    event.preventDefault();
+  };
 
   const onInputChange = (e) => {
     setFormData((prevState) => ({
@@ -161,8 +162,8 @@ const LoginForm = () => {
             </Button>
           </Tooltip>
         </Box>
-        <Typography sx={{mt:5}}>
-          Username: johndoe; password: 12345678 <br/>
+        <Typography sx={{ mt: 5 }}>
+          Username: johndoe; password: 12345678 <br />
           Username: walterwhite; password: 4567890
         </Typography>
       </Box>
